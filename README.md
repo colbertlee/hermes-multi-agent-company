@@ -6,6 +6,22 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version: v1.1.0](https://img.shields.io/badge/version-v1.1.0-blue.svg)](architecture/decisions/0001-3plus1-architecture.md)
 [![Hermes: 0.20+](https://img.shields.io/badge/hermes-0.20+-green.svg)](https://hermes-agent.nousresearch.com)
+[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://colbertlee.github.io/hermes-multi-agent-company/)
+
+## 📖 Documentation
+
+**📚 Full docs**: https://colbertlee.github.io/hermes-multi-agent-company/
+
+The GitHub Pages site renders:
+- Architecture overview (`architecture/COMPANY_ARCHITECTURE.md`)
+- Expert review (`architecture/ARCHITECTURE_REVIEW.md`)
+- Cost protocol (`architecture/A2A_COST_PROTOCOL.md`)
+- ADR-0001 (`architecture/decisions/`)
+- Usage guides (`docs/`)
+- **Blog posts** (`docs/blog/`)
+- Sample outputs (`examples/`)
+
+To enable locally, see [GitHub Pages setup](https://docs.github.com/en/pages/getting-started-with-github-pages).
 
 ## What's Inside
 

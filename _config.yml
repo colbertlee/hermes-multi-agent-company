@@ -1,0 +1,61 @@
+# GitHub Pages configuration
+# Renders markdown files with Jekyll + minimal theme
+
+title: Hermes Multi-Agent Company
+description: 3+1 multi-agent architecture for personal AI systems
+theme: jekyll-theme-minimal
+
+# Use relative links for clone-friendly navigation
+baseurl: "/hermes-multi-agent-company"
+url: "https://colbertlee.github.io"
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Exclude non-content files from build
+exclude:
+  - install/
+  - scripts/
+  - profiles/
+  - skills/
+  - .github/
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CHANGELOG.md
+  - CONTRIBUTING.md
+  - RELEASE_NOTES_v1.1.0.md
+  - README.md
+
+# Include architecture + docs + examples + blog in main nav
+include:
+  - architecture
+  - docs
+  - examples
+  - _pages
+
+# Nav order
+defaults:
+  - scope:
+      path: ""
+    values:
+      nav_order: 0
+  - scope:
+      path: "architecture"
+    values:
+      nav_order: 1
+  - scope:
+      path: "docs"
+    values:
+      nav_order: 2
+  - scope:
+      path: "docs/blog"
+    values:
+      nav_order: 3
+  - scope:
+      path: "examples"
+    values:
+      nav_order: 4
