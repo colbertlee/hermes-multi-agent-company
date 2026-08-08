@@ -1,0 +1,73 @@
+# Environment files (NEVER commit)
+.env
+.env.local
+.env.*.local
+
+# Secrets
+**/api_key*
+**/credentials*
+**/secrets/
+*.pem
+*.key
+
+# Hermes profile state (not config)
+profiles/*/state/
+profiles/*/logs/
+profiles/*/sessions/
+profiles/*/workspaces/
+profiles/*/attachments/
+profiles/*/cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Personal paths (sanitization check)
+**/colbert/
+**/home/
+
+# Output drafts (may contain sensitive content)
+**/drafts/*.md
+**/drafts/*.pdf
+**/drafts/*.pptx
+**/outputs/*.md
+**/outputs/*.pdf
+**/outputs/*.pptx
+**/outputs/*.png
+
+# Designer script outputs
+/tmp/*.pdf
+/tmp/*.pptx
+/tmp/*.png
+
+# Logs
+*.log
+logs/
+
+# Backup files
+*.bak
+*.bak.md
+*.tmp
+*.old
+
+# Stashes
+*.stash

@@ -1,0 +1,60 @@
+#!/bin/bash
+# Designer skill wrapper - 自动用 Hermes venv 跑 designer 脚本
+# Usage: designer-pdf <input.md> <output.pdf>
+#        designer-ppt <input.md> <output.pptx>
+#        designer-chart <input.csv> <output.png> [type] [x] [y]
+
+HERMES_VENV_PY="/home/colbert/.hermes/hermes-agent/venv/bin/python"
+SCRIPT_DIR="/home/colbert/.hermes/scripts/designer"
+
+case "$1" in
+    pdf)
+        shift
+        # 转换 -i/-o 为 --input/--output
+        args=()
+        while [[ $# -gt 0 ]]; do
+            case "$1" in
+                -i) args+=("--input" "$2"); shift 2;;
+                -o) args+=("--output" "$2"); shift 2;;
+                *) args+=("$1"); shift;;
+            esac
+        done
+        $HERMES_VENV_PY $SCRIPT_DIR/md_to_pdf.py "${args[@]}"
+        ;;
+    ppt|pptx)
+        shift
+        args=()
+        while [[ $# -gt 0 ]]; do
+            case "$1" in
+                -i) args+=("--input" "$2"); shift 2;;
+                -o) args+=("--output" "$2"); shift 2;;
+                *) args+=("$1"); shift;;
+            esac
+        done
+        $HERMES_VENV_PY $SCRIPT_DIR/outline_to_pptx.py "${args[@]}"
+        ;;
+    chart)
+        shift
+        args=()
+        while [[ $# -gt 0 ]]; do
+            case "$1" in
+                -i) args+=("--input" "$2"); shift 2;;
+                -o) args+=("--output" "$2"); shift 2;;
+                -t) args+=("--type" "$2"); shift 2;;
+                -x) args+=("--x" "$2"); shift 2;;
+                -y) args+=("--y" "$2"); shift 2;;
+                *) args+=("$1"); shift;;
+            esac
+        done
+        $HERMES_VENV_PY $SCRIPT_DIR/data_to_chart.py "${args[@]}"
+        ;;
+    *)
+        echo "Usage: designer {pdf|ppt|chart} [args]"
+        echo ""
+        echo "Examples:"
+        echo "  designer pdf -i report.md -o report.pdf"
+        echo "  designer ppt -i outline.md -o deck.pptx"
+        echo "  designer chart -i data.csv -o chart.png -t line -x time -y iops"
+        exit 1
+        ;;
+esac

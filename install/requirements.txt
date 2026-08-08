@@ -1,0 +1,16 @@
+# Designer Skill 依赖
+# 仅安装 Designer Skill 工具需要；Hermes Agent 主程序不在此列
+
+# Core
+reportlab>=4.0,<6.0     # PDF 生成
+python-pptx>=1.0,<2.0   # PPTX 生成
+matplotlib>=3.5,<4.0    # 图表生成
+pandas>=1.5,<3.0        # 数据处理
+
+# Optional
+numpy>=1.20             # pandas 依赖（自动装）
+pillow>=9.0             # 字体/图像支持（自动装）
+
+# 注：实际安装推荐用 Hermes 自带 venv
+#   /home/<user>/.hermes/hermes-agent/venv/bin/pip install -r requirements.txt
+# 或运行 install/setup.sh 自动检测 venv
