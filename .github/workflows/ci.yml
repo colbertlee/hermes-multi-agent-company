@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate repo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install designer dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install reportlab python-pptx matplotlib pandas
+
+      - name: Validate structure
+        run: bash install/validate.sh
+
+      - name: Sanitization check
+        run: bash install/sanitize-check.sh
+
+      - name: Smoke test designer scripts
+        run: |
+          python scripts/designer/md_to_pdf.py \
+            --input examples/sample-sr-report.md \
+            --output /tmp/test.pdf
+          python scripts/designer/outline_to_pptx.py \
+            --input examples/sample-ppt-outline.md \
+            --output /tmp/test.pptx
+          python scripts/designer/data_to_chart.py \
+            --input examples/sample-chart-data.csv \
+            --output /tmp/test.png \
+            --type line --x time --y iops
+
+  lint-markdown:
+    name: Lint markdown
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v17
+        with:
+          globs: '**/*.md'

@@ -22,9 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   - content/ppt-outline (PPT outline design)
 - multi-agent-routing skill — Default routing reminder
 - kanban-task-templates skill — Quick task creation templates
-- 3 install scripts (setup/install-skills/validate/sanitize-check)
+- 4 install scripts (setup/install-skills/validate/sanitize-check)
 - Profile templates with proper .env handling
 - 4 sample output templates (SR/PPT/research/csv)
+- GitHub Actions CI workflow
 
 ### Changed
 - COMPANY_ARCHITECTURE.md upgraded to v1.1 with full 3+1 design
