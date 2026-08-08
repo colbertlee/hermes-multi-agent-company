@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-## [1.1.0] - 2026-08-07
+## [1.1.0] - 2026-08-08
 
 ### Added (3+1 Architecture)
 - ARCHITECTURE_REVIEW.md — Expert review comparing 6+1 vs 3+1 architecture

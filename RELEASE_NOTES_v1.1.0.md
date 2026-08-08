@@ -1,6 +1,6 @@
 # v1.1.0 — 3+1 Multi-Agent Architecture
 
-**Release Date**: 2026-08-07
+**Release Date**: 2026-08-08
 **Status**: Stable
 **Tag**: `v1.1.0`
 
