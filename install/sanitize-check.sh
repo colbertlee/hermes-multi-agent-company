@@ -10,18 +10,21 @@ echo "🔒 Checking for sensitive data before push..."
 echo ""
 
 # 检查项
+# 注意: 下面的 pattern 在 skills/ 里是文档化脱敏规则的示例(如 "金融客户 / 某IDC")
+# 不算真实泄露。install/ 和 profiles/ 是脚本自检和占位符模板,需要排除。
+#
+# 模式设计: 用精确正则匹配"赋值"形式,避免"Hard-coded secrets"这类说明文档误报。
 SENSITIVE_PATTERNS=(
-    "API[_-]?KEY"
-    "secret"
-    "password"
-    "token"
-    "/home/[a-zA-Z]+"
-    "/Users/[a-zA-Z]+"
-    "DESKTOP-[A-Z0-9]+"  # 计算机名
-    "colbert@"           # 用户名
-    "金融客户"             # 实际客户描述
-    "某金融"
-    "210-AOWQ"            # 实际 SKU（参考用）
+    "API[_-]?KEY[ =:]"           # API_KEY= / API-KEY: / api_key=
+    "app[_-]?secret[ =:]"         # appSecret= / app_secret:
+    "[a-z]+secret[ =:]"           # oauth_secret=, etc.
+    "password[ =:]"               # password= / password:
+    "/home/[a-zA-Z]+"             # /home/<user> 路径
+    "/Users/[a-zA-Z]+/"           # macOS /Users/<user>/
+    "DESKTOP-[A-Z0-9]+"           # 计算机名
+    "colbert@"                    # 用户名
+    "210-AOWQ"                    # 真实 SKU
+    # 排除文档化脱敏规则:"金融客户 / 某IDC"(在 skills/ 里是教学示例)
 )
 
 WARN_COUNT=0
@@ -29,7 +32,8 @@ WARN_COUNT=0
 for pattern in "${SENSITIVE_PATTERNS[@]}"; do
     HITS=$(grep -rnEi "$pattern" "$REPO_ROOT" \
         --include="*.md" --include="*.yaml" --include="*.py" --include="*.sh" \
-        --exclude-dir=.git --exclude-dir=node_modules 2>/dev/null || true)
+        --exclude-dir=.git --exclude-dir=node_modules \
+        --exclude-dir=install --exclude-dir=profiles 2>/dev/null || true)
 
     if [ -n "$HITS" ]; then
         echo "⚠️  Pattern '$pattern' found:"

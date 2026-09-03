@@ -4,8 +4,13 @@
 #        designer-ppt <input.md> <output.pptx>
 #        designer-chart <input.csv> <output.png> [type] [x] [y]
 
-HERMES_VENV_PY="/home/colbert/.hermes/hermes-agent/venv/bin/python"
-SCRIPT_DIR="/home/colbert/.hermes/scripts/designer"
+# 自动检测 Hermes venv 路径（兼容不同用户的 $HOME）
+if [ -z "$HERMES_HOME" ]; then
+    HERMES_HOME="$HOME/.hermes"
+fi
+
+HERMES_VENV_PY="$HERMES_HOME/hermes-agent/venv/bin/python"
+SCRIPT_DIR="$HERMES_HOME/scripts/designer"
 
 case "$1" in
     pdf)

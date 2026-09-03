@@ -78,6 +78,7 @@ echo ""
 
 # 4. 数据脱敏检查（关键）
 echo "4. Checking for data leaks..."
+# 跳过 install/ 和 profiles/ 目录（前者含 pattern 定义本身，后者含占位符示例）
 LEAK_PATTERNS=(
     "/home/colbert"
     "/Users/[a-zA-Z]+/"
@@ -86,10 +87,13 @@ LEAK_PATTERNS=(
 )
 
 for pattern in "${LEAK_PATTERNS[@]}"; do
-    if grep -rE "$pattern" "$REPO_ROOT" \
+    HITS=$(grep -rE "$pattern" "$REPO_ROOT" \
         --include="*.md" --include="*.yaml" --include="*.py" --include="*.sh" \
-        --exclude-dir=.git --exclude-dir=node_modules 2>/dev/null | head -1; then
+        --exclude-dir=.git --exclude-dir=node_modules \
+        --exclude-dir=install --exclude-dir=profiles 2>/dev/null || true)
+    if [ -n "$HITS" ]; then
         echo "  ⚠️  Found potential leak: $pattern"
+        echo "     First hit: $(echo "$HITS" | head -1)"
         ERRORS=$((ERRORS + 1))
     fi
 done
