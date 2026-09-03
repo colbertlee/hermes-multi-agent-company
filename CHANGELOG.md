@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-09-03
+
+### Fixed
+- `scripts/designer/designer` — hardcoded `/home/colbert/` path replaced with `$HERMES_HOME`/`$HOME` for cross-environment portability
+- `install/validate.sh` — fixed false-positive bug in leak check (`if grep | head -1` always returns 0 even when empty)
+- `install/sanitize-check.sh` — refined patterns to require assignment syntax, eliminating false positives on documentation text
+
+### Verified
+- `validate.sh`: All checks passed ✅
+- `sanitize-check.sh`: Safe to push ✅
+- Designer scripts (pdf/ppt/chart): 3/3 working ✅
+
 ## [1.1.0] - 2026-08-08
 
 ### Added (3+1 Architecture)
@@ -54,6 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **Minor** (1.X.0): New skills, agents, or significant capabilities
 - **Patch** (1.1.X): Bug fixes, docs, dependencies
 
-[Unreleased]: https://github.com/YOUR_USER/hermes-multi-agent-company/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/YOUR_USER/hermes-multi-agent-company/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/YOUR_USER/hermes-multi-agent-company/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/YOUR_USER/hermes-multi-agent-company/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/YOUR_USER/hermes-multi-agent-company/releases/tag/v1.0.0
