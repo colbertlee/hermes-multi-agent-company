@@ -42,6 +42,7 @@ A production-tested multi-agent architecture for [Hermes Agent](https://hermes-a
 
 | Document | Description |
 |----------|-------------|
+| **[Features](docs/FEATURES.md)** ⭐ | What it does / doesn't / real use cases |
 | [Architecture](architecture/COMPANY_ARCHITECTURE.md) | Full v1.1 spec |
 | [Expert Review](architecture/ARCHITECTURE_REVIEW.md) | Why 3+1 (not 6+1) |
 | [Cost Protocol](architecture/A2A_COST_PROTOCOL.md) | 6 token-saving rules |
