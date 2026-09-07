@@ -1,7 +1,7 @@
 # Release Notes — v1.1.2
 
-**Release date:** 2026-09-06
-**Type:** MINOR (documentation feature)
+**Release date:** 2026-09-06 (original) / 2026-09-07 (sanitize-check fix rolled in)
+**Type:** MINOR (documentation feature) + PATCH (sanitize-check backport)
 **Previous:** v1.1.1
 
 ## What changed
@@ -29,6 +29,23 @@ v1.1.2 adds **`docs/FEATURES.md`** (359 lines, 11.8 KB) — a complete user-faci
 
 `index.md` now lists `FEATURES.md` as the ⭐ recommended starting point.
 
+---
+
+## Patch (2026-09-07) — rolled into v1.1.2
+
+### Fixed
+
+- **`install/sanitize-check.sh`** — Replace hardcoded user-home path literals
+  in documentation with `$HOME`, so the leak-check script works for any
+  user / any machine. The script was incorrectly flagging legitimate
+  `$HOME` mentions in docs as "potential leaks" on a fresh install
+  (commit `4744d13`, backport from release prep).
+
+If you already installed v1.1.2 without the fix, just re-run
+`install/sanitize-check.sh` and the false positives go away.
+
+---
+
 ## Why a MINOR (not PATCH)
 
 Per `version-sop`:
@@ -38,7 +55,7 @@ Per `version-sop`:
 | New skill / sub-skill | ❌ no |
 | New Designer tool | ❌ no |
 | **Major documentation addition** | ✅ yes (359-line user-facing doc) |
-| Bug fix | ❌ no |
+| Bug fix | ❌ no (came in as backport, not the trigger) |
 
 "Major documentation addition" → MINOR.
 
@@ -62,8 +79,10 @@ Per `version-sop`:
 ```
 docs/FEATURES.md           (new, 359 lines)
 docs/index.md              (FEATURES.md added to docs table as ⭐)
-CHANGELOG.md               ([1.1.2] section added)
+CHANGELOG.md               ([1.1.2] section added + patch entry)
 README.md                  (badge updated to v1.1.2)
+RELEASE_NOTES_v1.1.2.md    (this file — patch addendum)
+install/sanitize-check.sh  ($HOME portability fix, commit 4744d13)
 ```
 
 ## What's next
@@ -72,5 +91,5 @@ See v1.2+ roadmap in FEATURES.md §10.
 
 ---
 
-*v1.1.2 — FEATURES.md Documentation*
+*v1.1.2 — FEATURES.md Documentation + sanitize-check portability patch*
 *🦞 Hermes Agent · Multi-Agent Company*

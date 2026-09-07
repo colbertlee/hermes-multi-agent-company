@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-## [1.1.2] - 2026-09-06
+## [1.1.2] - 2026-09-07
 
 ### Added
 - `docs/FEATURES.md` — User-facing feature documentation (359 lines, 11.8 KB)
@@ -17,9 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   - Real Dell FSE + content content scenarios
 - `index.md` updated with FEATURES.md as ⭐ recommended starting point
 
+### Fixed
+- `install/sanitize-check.sh` — replace hardcoded user-home path literals in docs with `$HOME` for portability across users/machines
+
 ### Why this release
 - v1.1.0/v1.1.1 focused on scripts and architecture — this release adds the missing "what can this do for me?" doc
 - Addresses feedback that 3+1 architecture was opaque to new users
+- Sanitize-check path fix rolled in to keep cross-user install clean (backport from release prep)
 
 ## [1.1.1] - 2026-09-03
 
