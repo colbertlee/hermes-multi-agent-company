@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-09-06
+
+### Added
+- `docs/FEATURES.md` — User-facing feature documentation (359 lines, 11.8 KB)
+  - 10 sections from user perspective: what it does, what it doesn't, token economics
+  - 3-minute quickstart + 30-minute full deployment
+  - Honest "what it doesn't do" boundaries
+  - Real Dell FSE + content content scenarios
+- `index.md` updated with FEATURES.md as ⭐ recommended starting point
+
+### Why this release
+- v1.1.0/v1.1.1 focused on scripts and architecture — this release adds the missing "what can this do for me?" doc
+- Addresses feedback that 3+1 architecture was opaque to new users
+
 ## [1.1.1] - 2026-09-03
 
 ### Fixed

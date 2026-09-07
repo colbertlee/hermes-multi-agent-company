@@ -4,7 +4,7 @@
 > Designed for solo experts / small teams who want AI collaboration without enterprise overhead.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version: v1.1.1](https://img.shields.io/badge/version-v1.1.1-blue.svg)](architecture/decisions/0001-3plus1-architecture.md)
+[![Version: v1.1.2](https://img.shields.io/badge/version-v1.1.2-blue.svg)](architecture/decisions/0001-3plus1-architecture.md)
 [![Hermes: 0.20+](https://img.shields.io/badge/hermes-0.20+-green.svg)](https://hermes-agent.nousresearch.com)
 [![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://colbertlee.github.io/hermes-multi-agent-company/)
 
