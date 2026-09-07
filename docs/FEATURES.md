@@ -95,7 +95,7 @@ Orchestrator 发图给老板
 # 安装后，老板直接:
 $ hermes cron add daily-storage-alerts \
     --schedule "0 9 * * *" \
-    --command "/home/colbert/.hermes/scripts/daily-alerts.py"
+    --command "$HOME/.hermes/scripts/daily-alerts.py"
 ```
 
 **Token：0**。任务失败 → 飞书告警。

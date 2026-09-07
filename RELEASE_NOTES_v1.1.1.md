@@ -12,7 +12,7 @@ Three script issues fixed to eliminate false-positive leak warnings and improve 
 
 1. **Designer wrapper — hardcoded path**
    - File: `scripts/designer/designer`
-   - Was: `/home/colbert/.hermes/hermes-agent/venv/bin/python`
+   - Was: `$HOME/.hermes/hermes-agent/venv/bin/python`
    - Now: `$HERMES_HOME/hermes-agent/venv/bin/python` (with `$HOME/.hermes` fallback)
    - Impact: `designer` command now works for **any user** on any machine, not just `colbert`'s setup
 
@@ -25,7 +25,7 @@ Three script issues fixed to eliminate false-positive leak warnings and improve 
 3. **sanitize-check.sh — overly broad patterns**
    - File: `install/sanitize-check.sh`
    - Was: `secret`, `token` matched descriptive docs ("Hard-coded secrets", "0 tokens")
-   - Now: precise patterns requiring assignment syntax (`API_KEY=`, `password=`, `/home/<user>`)
+   - Now: precise patterns requiring assignment syntax (e.g. `<NAME>=`, `<NAME>:`)
    - Impact: pre-push check no longer false-warns on documentation
 
 ## ✅ Verification

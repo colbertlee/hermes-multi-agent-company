@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## [1.1.1] - 2026-09-03
 
 ### Fixed
-- `scripts/designer/designer` — hardcoded `/home/colbert/` path replaced with `$HERMES_HOME`/`$HOME` for cross-environment portability
+- `scripts/designer/designer` — hardcoded `/home/<user>/` path replaced with `$HERMES_HOME`/`$HOME` for cross-environment portability
 - `install/validate.sh` — fixed false-positive bug in leak check (`if grep | head -1` always returns 0 even when empty)
 - `install/sanitize-check.sh` — refined patterns to require assignment syntax, eliminating false positives on documentation text
 
